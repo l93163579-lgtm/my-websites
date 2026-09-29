@@ -1,601 +1,637 @@
-/* =========================
-   BASIC RESET
-========================= */
-
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 html {
-    scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }
 
 body {
-    font-family: "Segoe UI", Arial, sans-serif;
-    background: #fffaf4;
-    color: #3b2418;
-    line-height: 1.7;
+  font-family: Arial, sans-serif;
+  background: #f4f8fc;
+  color: #172033;
+  line-height: 1.6;
 }
 
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 
-/* =========================
-   HEADER
-========================= */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 
-header {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+  padding: 15px 7%;
 
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(10px);
 
-    padding: 18px 7%;
-
-    background: rgba(82, 20, 61, 0.96);
-    backdrop-filter: blur(10px);
-
-    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
+  border-bottom: 1px solid #e5eaf0;
 }
 
 .logo {
-    color: #ffd477;
-    font-size: 25px;
-    font-weight: 800;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo span {
+  font-size: 35px;
+}
+
+.logo h1 {
+  font-size: 22px;
+}
+
+.logo p {
+  font-size: 12px;
+  color: #657083;
 }
 
 nav {
-    display: flex;
-    gap: 22px;
+  display: flex;
+  gap: 25px;
 }
 
-nav a {
-    color: white;
-    text-decoration: none;
-    font-size: 15px;
-    font-weight: 600;
-
-    transition: 0.3s;
+nav a,
+.footer-links a {
+  color: #172033;
+  text-decoration: none;
+  font-weight: 600;
 }
 
-nav a:hover {
-    color: #ffd477;
+nav a:hover,
+.footer-links a:hover {
+  color: #1479ff;
 }
 
+.hero {
+  min-height: 620px;
 
-/* =========================
-   HERO SECTION
-========================= */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 
-#home {
-    min-height: 92vh;
+  gap: 50px;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  padding: 80px 7%;
 
-    text-align: center;
-
-    padding: 40px 20px;
-
-    color: white;
-
-    background:
-        linear-gradient(
-            rgba(55, 8, 43, 0.62),
-            rgba(55, 8, 43, 0.72)
-        ),
-        url("images/vrindavan.jpg");
-
-    background-size: cover;
-    background-position: center;
+  background:
+    linear-gradient(135deg, #dff3ff, #ffffff);
 }
 
 .hero-content {
-    max-width: 850px;
-
-    animation: heroAppear 1.2s ease;
+  max-width: 650px;
 }
 
-.hero-content p:first-child {
-    color: #ffd477;
-    font-size: 22px;
-    font-weight: bold;
+.tag {
+  color: #1479ff;
+  font-weight: bold;
+  margin-bottom: 15px;
 }
 
-.hero-content h1 {
-    font-size: clamp(48px, 8vw, 90px);
-    line-height: 1.1;
-
-    margin: 15px 0;
-
-    text-shadow: 0 5px 25px rgba(0,0,0,.4);
+.hero h2 {
+  font-size: clamp(45px, 7vw, 80px);
+  line-height: 1.05;
+  margin-bottom: 25px;
 }
 
-.hero-content h2 {
-    font-size: clamp(20px, 4vw, 32px);
-    font-weight: 500;
-
-    margin-bottom: 15px;
+.hero h2 span {
+  color: #1479ff;
 }
 
-.hero-content p {
-    font-size: 18px;
-    margin-bottom: 30px;
+.hero-content > p:not(.tag) {
+  font-size: 18px;
+  color: #596579;
+  max-width: 600px;
+  margin-bottom: 30px;
 }
 
-.hero-content a {
-    display: inline-block;
+.btn {
+  display: inline-block;
 
-    padding: 14px 30px;
+  padding: 13px 25px;
 
-    border-radius: 50px;
+  background: #1479ff;
+  color: white;
 
-    background: #e6a33a;
-    color: white;
+  text-decoration: none;
+  font-weight: bold;
 
-    text-decoration: none;
-    font-weight: 700;
+  border-radius: 10px;
 
-    box-shadow: 0 8px 25px rgba(0,0,0,.25);
-
-    transition: 0.3s;
+  transition: 0.3s;
 }
 
-.hero-content a:hover {
-    transform: translateY(-4px);
-    background: #c9821d;
+.btn:hover {
+  transform: translateY(-3px);
 }
 
+.weather-card {
+  width: 330px;
+  min-height: 380px;
 
-/* =========================
-   ALL SECTIONS
-========================= */
+  padding: 35px;
 
-section:not(#home) {
-    padding: 90px 8%;
+  text-align: center;
 
-    max-width: 1250px;
-    margin: auto;
+  border-radius: 25px;
+
+  background: rgba(255,255,255,0.8);
+
+  box-shadow: 0 20px 50px rgba(20,70,120,0.15);
+
+  border: 1px solid white;
 }
 
-section:not(#home) h2 {
-    text-align: center;
-
-    color: #68164c;
-
-    font-size: clamp(30px, 5vw, 45px);
-
-    margin-bottom: 25px;
+.sun {
+  font-size: 75px;
+  margin-bottom: 10px;
 }
 
-section:not(#home) > p {
-    max-width: 850px;
-
-    margin: 0 auto 15px;
-
-    text-align: center;
-
-    color: #674b3d;
+.weather-card h3 {
+  font-size: 28px;
 }
 
-
-/* =========================
-   WELCOME
-========================= */
-
-.welcome {
-    background: #fff;
+.date {
+  color: #687386;
 }
 
+.temp {
+  font-size: 70px;
+  font-weight: bold;
 
-/* =========================
-   ARTICLES / CARDS
-========================= */
+  margin: 20px 0;
 
-article,
-section#krishna > div,
-section#places > div,
-section:not(#home) > div {
-    background: white;
-
-    padding: 30px;
-
-    margin: 20px auto;
-
-    border-radius: 20px;
-
-    border: 1px solid rgba(120, 50, 80, .08);
-
-    box-shadow: 0 10px 35px rgba(70, 30, 20, .08);
-
-    transition: .35s;
+  color: #1479ff;
 }
 
-article:hover,
-section#krishna > div:hover,
-section:not(#home) > div:hover {
-    transform: translateY(-7px);
-
-    box-shadow: 0 18px 45px rgba(70, 30, 20, .14);
+.section {
+  padding: 90px 7%;
 }
 
-article h3,
-section#krishna h3,
-section:not(#home) > div h3 {
-    color: #7a2059;
-
-    font-size: 23px;
-
-    margin-bottom: 10px;
+.section-title {
+  text-align: center;
+  margin-bottom: 45px;
 }
 
-article p,
-section#krishna p,
-section:not(#home) > div p {
-    color: #62483b;
+.section-title p {
+  color: #1479ff;
+  font-weight: bold;
+  letter-spacing: 2px;
 }
 
-
-/* =========================
-   TEMPLE SECTION
-========================= */
-
-#temples {
-    background: #fff8ed;
+.section-title h2 {
+  font-size: 42px;
+  margin-top: 5px;
 }
 
-#temples article {
-    max-width: 900px;
+.weather-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, 1fr);
+
+  gap: 20px;
 }
 
-#temples article a {
-    display: inline-block;
+.info-card {
+  padding: 30px;
 
-    margin-top: 15px;
+  text-align: center;
 
-    color: #8a245e;
+  background: white;
 
-    font-weight: bold;
+  border-radius: 18px;
 
-    text-decoration: none;
+  box-shadow: 0 10px 30px rgba(20,40,80,0.08);
+
+  transition: 0.3s;
 }
 
-#temples article a:hover {
-    color: #d18a22;
+.info-card:hover {
+  transform: translateY(-8px);
 }
 
-
-/* =========================
-   RADHA KRISHNA
-========================= */
-
-#krishna {
-    background:
-        linear-gradient(
-            135deg,
-            #fff8ee,
-            #fff1f7
-        );
+.info-card div {
+  font-size: 40px;
 }
 
-#krishna > div {
-    max-width: 700px;
+.info-card h3 {
+  margin: 10px 0;
 }
 
-blockquote {
-    margin: 40px auto 0;
+.info-card strong {
+  display: block;
 
-    max-width: 700px;
+  font-size: 32px;
 
-    padding: 25px;
-
-    text-align: center;
-
-    font-size: 28px;
-    font-weight: bold;
-
-    color: #fff;
-
-    background: linear-gradient(
-        135deg,
-        #651448,
-        #92245f
-    );
-
-    border-radius: 20px;
-
-    box-shadow: 0 15px 35px rgba(80,20,60,.2);
+  color: #1479ff;
 }
 
-
-/* =========================
-   PLACES
-========================= */
-
-#places ul {
-    max-width: 700px;
-
-    margin: 35px auto;
-
-    list-style: none;
+.info-card p {
+  color: #758093;
 }
 
-#places li {
-    background: white;
-
-    margin: 12px 0;
-
-    padding: 18px 25px;
-
-    border-radius: 14px;
-
-    box-shadow: 0 7px 25px rgba(0,0,0,.07);
-
-    font-weight: 600;
-
-    transition: .3s;
+.dark-section {
+  background: #111c2e;
+  color: white;
 }
 
-#places li:hover {
-    transform: translateX(8px);
+.dark-section .section-title p {
+  color: #6eb4ff;
 }
 
+.alert-box {
+  max-width: 900px;
 
-/* =========================
-   GALLERY
-========================= */
+  margin: auto;
 
-#gallery {
-    background: #fff;
+  display: flex;
+  align-items: center;
+  gap: 25px;
+
+  padding: 30px;
+
+  border-radius: 20px;
+
+  background: #1d2b42;
 }
 
-#gallery > div {
-    display: grid;
-
-    grid-template-columns:
-        repeat(auto-fit, minmax(230px, 1fr));
-
-    gap: 20px;
-
-    margin-top: 40px;
+.alert-icon {
+  font-size: 55px;
 }
 
-#gallery img {
-    width: 100%;
-    height: 280px;
-
-    object-fit: cover;
-
-    border-radius: 20px;
-
-    box-shadow: 0 10px 30px rgba(0,0,0,.12);
-
-    transition: .4s;
+.alert-box p {
+  color: #c4cfdd;
+  margin: 10px 0;
 }
 
-#gallery img:hover {
-    transform: scale(1.04);
-
-    box-shadow: 0 18px 45px rgba(0,0,0,.18);
+.alert-box a {
+  color: #6eb4ff;
+  font-weight: bold;
+  text-decoration: none;
 }
 
+.radar-card {
+  max-width: 1000px;
 
-/* =========================
-   CONTACT
-========================= */
+  margin: auto;
 
-#contact {
-    background: #fff8ee;
+  display: flex;
+  align-items: center;
+  gap: 60px;
+
+  padding: 50px;
+
+  background: white;
+
+  border-radius: 25px;
+
+  box-shadow: 0 15px 40px rgba(20,40,80,0.08);
 }
 
-form {
-    max-width: 700px;
+.radar-circle {
+  min-width: 220px;
+  height: 220px;
 
-    margin: 40px auto 0;
+  border-radius: 50%;
 
-    background: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 
-    padding: 35px;
-
-    border-radius: 22px;
-
-    box-shadow: 0 12px 40px rgba(0,0,0,.09);
+  background:
+    radial-gradient(circle,
+    #e7f5ff 5%,
+    #c4e8ff 30%,
+    #8bc9ff 55%,
+    #4da2ff 100%);
 }
 
-form label {
-    font-weight: 700;
-
-    color: #5d183f;
+.radar-circle span {
+  font-size: 50px;
 }
 
-form input,
-form textarea {
-    width: 100%;
-
-    margin-top: 7px;
-    margin-bottom: 18px;
-
-    padding: 14px 16px;
-
-    border: 1px solid #e0d3c8;
-
-    border-radius: 12px;
-
-    outline: none;
-
-    font-size: 15px;
-
-    transition: .3s;
+.radar-circle p {
+  font-weight: bold;
+  margin-top: 10px;
 }
 
-form input:focus,
-form textarea:focus {
-    border-color: #8a245e;
-
-    box-shadow: 0 0 0 3px rgba(138,36,94,.1);
+.radar-text h3 {
+  font-size: 30px;
 }
 
-form textarea {
-    min-height: 140px;
-
-    resize: vertical;
+.radar-text p {
+  color: #657083;
+  margin: 15px 0;
 }
 
-form button {
-    border: none;
-
-    padding: 14px 30px;
-
-    border-radius: 50px;
-
-    background: #74194f;
-
-    color: white;
-
-    font-size: 16px;
-
-    font-weight: 700;
-
-    cursor: pointer;
-
-    transition: .3s;
+.radar-points {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
-form button:hover {
-    background: #9a2868;
+.radar-points span {
+  padding: 8px 12px;
 
-    transform: translateY(-3px);
+  background: #edf6ff;
+
+  border-radius: 20px;
+
+  color: #1479ff;
+
+  font-weight: bold;
 }
 
+.forecast {
+  background: #edf5fb;
+}
 
-/* =========================
-   FOOTER
-========================= */
+.forecast-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(7, 1fr);
+
+  gap: 12px;
+}
+
+.day {
+  padding: 22px 10px;
+
+  text-align: center;
+
+  background: white;
+
+  border-radius: 15px;
+}
+
+.day h3 {
+  font-size: 14px;
+}
+
+.day span {
+  display: block;
+  font-size: 35px;
+  margin: 10px 0;
+}
+
+.day strong {
+  font-size: 25px;
+  color: #1479ff;
+}
+
+.day p {
+  font-size: 12px;
+  color: #788496;
+}
+
+.news-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, 1fr);
+
+  gap: 25px;
+}
+
+.news-grid article {
+  background: white;
+
+  padding: 30px;
+
+  border-radius: 20px;
+
+  box-shadow: 0 10px 30px rgba(20,40,80,0.07);
+}
+
+.news-grid article > span {
+  font-size: 45px;
+}
+
+.news-grid h3 {
+  font-size: 24px;
+  margin: 10px 0;
+}
+
+.news-grid p {
+  color: #687386;
+}
+
+.news-grid a {
+  display: inline-block;
+
+  margin-top: 15px;
+
+  color: #1479ff;
+
+  text-decoration: none;
+
+  font-weight: bold;
+}
+
+.about {
+  background:
+    linear-gradient(135deg, #dff3ff, #ffffff);
+}
+
+.about-content {
+  max-width: 850px;
+  margin: auto;
+  text-align: center;
+}
+
+.about-content > p:first-child {
+  color: #1479ff;
+  font-weight: bold;
+}
+
+.about h2 {
+  font-size: 50px;
+  line-height: 1.1;
+  margin: 15px 0 25px;
+}
+
+.about h2 span {
+  color: #1479ff;
+}
+
+.about-content p {
+  color: #596579;
+  margin-bottom: 20px;
+}
 
 footer {
-    background: #351026;
+  padding: 50px 7%;
 
-    color: white;
+  text-align: center;
 
+  background: #0b1422;
+
+  color: white;
+}
+
+footer h2 {
+  margin-bottom: 5px;
+}
+
+footer > p {
+  color: #aeb9c8;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  margin: 25px 0;
+}
+
+.footer-links a {
+  color: white;
+}
+
+.copyright {
+  font-size: 13px;
+}
+
+/* Mobile */
+
+@media (max-width: 900px) {
+
+  .header {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  nav {
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .hero {
+    flex-direction: column;
     text-align: center;
+  }
 
-    padding: 45px 20px;
+  .weather-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .forecast-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .radar-card {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .news-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
-footer h3 {
-    color: #ffd477;
+@media (max-width: 600px) {
 
-    font-size: 25px;
+  .hero {
+    padding: 55px 5%;
+  }
 
-    margin-bottom: 8px;
+  .hero h2 {
+    font-size: 45px;
+  }
+
+  .weather-card {
+    width: 100%;
+  }
+
+  .section {
+    padding: 60px 5%;
+  }
+
+  .section-title h2 {
+    font-size: 32px;
+  }
+
+  .weather-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .forecast-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .radar-card {
+    padding: 30px 20px;
+  }
+
+  .radar-circle {
+    min-width: 180px;
+    height: 180px;
+  }
+
+  .about h2 {
+    font-size: 38px;
+  }
+
+}.hourly-grid {
+  display: flex;
+  gap: 15px;
+  overflow-x: auto;
+  padding: 10px 5px 25px;
 }
 
-footer p {
-    margin: 5px;
+.hour-card {
+  min-width: 130px;
+  padding: 22px 15px;
+  text-align: center;
+  background: white;
+  border-radius: 18px;
+  box-shadow: 0 8px 25px rgba(20, 40, 80, 0.08);
 }
 
-
-/* =========================
-   ANIMATION
-========================= */
-
-@keyframes heroAppear {
-
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-
+.hour-card h3 {
+  font-size: 14px;
+  color: #657083;
 }
 
-
-/* =========================
-   MOBILE
-========================= */
-
-@media (max-width: 800px) {
-
-    header {
-        flex-direction: column;
-
-        gap: 15px;
-
-        padding: 15px 5%;
-    }
-
-    nav {
-        flex-wrap: wrap;
-
-        justify-content: center;
-
-        gap: 10px 15px;
-    }
-
-    nav a {
-        font-size: 13px;
-    }
-
-    #home {
-        min-height: 80vh;
-    }
-
-    section:not(#home) {
-        padding: 60px 5%;
-    }
-
-    .hero-content h1 {
-        font-size: 52px;
-    }
-
-    .hero-content p {
-        font-size: 16px;
-    }
-
-    article,
-    section#krishna > div {
-        padding: 22px;
-    }
-
-    #gallery img {
-        height: 220px;
-    }
-
+.hour-card span {
+  display: block;
+  font-size: 32px;
+  margin: 10px 0;
 }
 
+.hour-card strong {
+  display: block;
+  font-size: 25px;
+  color: #1479ff;
+}
 
-/* =========================
-   SMALL MOBILE
-========================= */
+.hour-card p {
+  margin: 8px 0;
+  color: #1479ff;
+}
 
-@media (max-width: 450px) {
+.hour-card small {
+  color: #687386;
+}
 
-    .logo {
-        font-size: 20px;
-    }
+@media (max-width: 600px) {
 
-    nav {
-        gap: 7px 10px;
-    }
+  .hourly-grid {
+    padding-left: 2px;
+    padding-right: 2px;
+  }
 
-    nav a {
-        font-size: 12px;
-    }
-
-    .hero-content h1 {
-        font-size: 43px;
-    }
-
-    blockquote {
-        font-size: 22px;
-    }
+  .hour-card {
+    min-width: 115px;
+  }
 
 }
