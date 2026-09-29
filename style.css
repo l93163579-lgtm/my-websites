@@ -1,0 +1,601 @@
+/* =========================
+   BASIC RESET
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: #fffaf4;
+    color: #3b2418;
+    line-height: 1.7;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 18px 7%;
+
+    background: rgba(82, 20, 61, 0.96);
+    backdrop-filter: blur(10px);
+
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
+}
+
+.logo {
+    color: #ffd477;
+    font-size: 25px;
+    font-weight: 800;
+}
+
+nav {
+    display: flex;
+    gap: 22px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 600;
+
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: #ffd477;
+}
+
+
+/* =========================
+   HERO SECTION
+========================= */
+
+#home {
+    min-height: 92vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    padding: 40px 20px;
+
+    color: white;
+
+    background:
+        linear-gradient(
+            rgba(55, 8, 43, 0.62),
+            rgba(55, 8, 43, 0.72)
+        ),
+        url("images/vrindavan.jpg");
+
+    background-size: cover;
+    background-position: center;
+}
+
+.hero-content {
+    max-width: 850px;
+
+    animation: heroAppear 1.2s ease;
+}
+
+.hero-content p:first-child {
+    color: #ffd477;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.hero-content h1 {
+    font-size: clamp(48px, 8vw, 90px);
+    line-height: 1.1;
+
+    margin: 15px 0;
+
+    text-shadow: 0 5px 25px rgba(0,0,0,.4);
+}
+
+.hero-content h2 {
+    font-size: clamp(20px, 4vw, 32px);
+    font-weight: 500;
+
+    margin-bottom: 15px;
+}
+
+.hero-content p {
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+.hero-content a {
+    display: inline-block;
+
+    padding: 14px 30px;
+
+    border-radius: 50px;
+
+    background: #e6a33a;
+    color: white;
+
+    text-decoration: none;
+    font-weight: 700;
+
+    box-shadow: 0 8px 25px rgba(0,0,0,.25);
+
+    transition: 0.3s;
+}
+
+.hero-content a:hover {
+    transform: translateY(-4px);
+    background: #c9821d;
+}
+
+
+/* =========================
+   ALL SECTIONS
+========================= */
+
+section:not(#home) {
+    padding: 90px 8%;
+
+    max-width: 1250px;
+    margin: auto;
+}
+
+section:not(#home) h2 {
+    text-align: center;
+
+    color: #68164c;
+
+    font-size: clamp(30px, 5vw, 45px);
+
+    margin-bottom: 25px;
+}
+
+section:not(#home) > p {
+    max-width: 850px;
+
+    margin: 0 auto 15px;
+
+    text-align: center;
+
+    color: #674b3d;
+}
+
+
+/* =========================
+   WELCOME
+========================= */
+
+.welcome {
+    background: #fff;
+}
+
+
+/* =========================
+   ARTICLES / CARDS
+========================= */
+
+article,
+section#krishna > div,
+section#places > div,
+section:not(#home) > div {
+    background: white;
+
+    padding: 30px;
+
+    margin: 20px auto;
+
+    border-radius: 20px;
+
+    border: 1px solid rgba(120, 50, 80, .08);
+
+    box-shadow: 0 10px 35px rgba(70, 30, 20, .08);
+
+    transition: .35s;
+}
+
+article:hover,
+section#krishna > div:hover,
+section:not(#home) > div:hover {
+    transform: translateY(-7px);
+
+    box-shadow: 0 18px 45px rgba(70, 30, 20, .14);
+}
+
+article h3,
+section#krishna h3,
+section:not(#home) > div h3 {
+    color: #7a2059;
+
+    font-size: 23px;
+
+    margin-bottom: 10px;
+}
+
+article p,
+section#krishna p,
+section:not(#home) > div p {
+    color: #62483b;
+}
+
+
+/* =========================
+   TEMPLE SECTION
+========================= */
+
+#temples {
+    background: #fff8ed;
+}
+
+#temples article {
+    max-width: 900px;
+}
+
+#temples article a {
+    display: inline-block;
+
+    margin-top: 15px;
+
+    color: #8a245e;
+
+    font-weight: bold;
+
+    text-decoration: none;
+}
+
+#temples article a:hover {
+    color: #d18a22;
+}
+
+
+/* =========================
+   RADHA KRISHNA
+========================= */
+
+#krishna {
+    background:
+        linear-gradient(
+            135deg,
+            #fff8ee,
+            #fff1f7
+        );
+}
+
+#krishna > div {
+    max-width: 700px;
+}
+
+blockquote {
+    margin: 40px auto 0;
+
+    max-width: 700px;
+
+    padding: 25px;
+
+    text-align: center;
+
+    font-size: 28px;
+    font-weight: bold;
+
+    color: #fff;
+
+    background: linear-gradient(
+        135deg,
+        #651448,
+        #92245f
+    );
+
+    border-radius: 20px;
+
+    box-shadow: 0 15px 35px rgba(80,20,60,.2);
+}
+
+
+/* =========================
+   PLACES
+========================= */
+
+#places ul {
+    max-width: 700px;
+
+    margin: 35px auto;
+
+    list-style: none;
+}
+
+#places li {
+    background: white;
+
+    margin: 12px 0;
+
+    padding: 18px 25px;
+
+    border-radius: 14px;
+
+    box-shadow: 0 7px 25px rgba(0,0,0,.07);
+
+    font-weight: 600;
+
+    transition: .3s;
+}
+
+#places li:hover {
+    transform: translateX(8px);
+}
+
+
+/* =========================
+   GALLERY
+========================= */
+
+#gallery {
+    background: #fff;
+}
+
+#gallery > div {
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(230px, 1fr));
+
+    gap: 20px;
+
+    margin-top: 40px;
+}
+
+#gallery img {
+    width: 100%;
+    height: 280px;
+
+    object-fit: cover;
+
+    border-radius: 20px;
+
+    box-shadow: 0 10px 30px rgba(0,0,0,.12);
+
+    transition: .4s;
+}
+
+#gallery img:hover {
+    transform: scale(1.04);
+
+    box-shadow: 0 18px 45px rgba(0,0,0,.18);
+}
+
+
+/* =========================
+   CONTACT
+========================= */
+
+#contact {
+    background: #fff8ee;
+}
+
+form {
+    max-width: 700px;
+
+    margin: 40px auto 0;
+
+    background: white;
+
+    padding: 35px;
+
+    border-radius: 22px;
+
+    box-shadow: 0 12px 40px rgba(0,0,0,.09);
+}
+
+form label {
+    font-weight: 700;
+
+    color: #5d183f;
+}
+
+form input,
+form textarea {
+    width: 100%;
+
+    margin-top: 7px;
+    margin-bottom: 18px;
+
+    padding: 14px 16px;
+
+    border: 1px solid #e0d3c8;
+
+    border-radius: 12px;
+
+    outline: none;
+
+    font-size: 15px;
+
+    transition: .3s;
+}
+
+form input:focus,
+form textarea:focus {
+    border-color: #8a245e;
+
+    box-shadow: 0 0 0 3px rgba(138,36,94,.1);
+}
+
+form textarea {
+    min-height: 140px;
+
+    resize: vertical;
+}
+
+form button {
+    border: none;
+
+    padding: 14px 30px;
+
+    border-radius: 50px;
+
+    background: #74194f;
+
+    color: white;
+
+    font-size: 16px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: .3s;
+}
+
+form button:hover {
+    background: #9a2868;
+
+    transform: translateY(-3px);
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    background: #351026;
+
+    color: white;
+
+    text-align: center;
+
+    padding: 45px 20px;
+}
+
+footer h3 {
+    color: #ffd477;
+
+    font-size: 25px;
+
+    margin-bottom: 8px;
+}
+
+footer p {
+    margin: 5px;
+}
+
+
+/* =========================
+   ANIMATION
+========================= */
+
+@keyframes heroAppear {
+
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 800px) {
+
+    header {
+        flex-direction: column;
+
+        gap: 15px;
+
+        padding: 15px 5%;
+    }
+
+    nav {
+        flex-wrap: wrap;
+
+        justify-content: center;
+
+        gap: 10px 15px;
+    }
+
+    nav a {
+        font-size: 13px;
+    }
+
+    #home {
+        min-height: 80vh;
+    }
+
+    section:not(#home) {
+        padding: 60px 5%;
+    }
+
+    .hero-content h1 {
+        font-size: 52px;
+    }
+
+    .hero-content p {
+        font-size: 16px;
+    }
+
+    article,
+    section#krishna > div {
+        padding: 22px;
+    }
+
+    #gallery img {
+        height: 220px;
+    }
+
+}
+
+
+/* =========================
+   SMALL MOBILE
+========================= */
+
+@media (max-width: 450px) {
+
+    .logo {
+        font-size: 20px;
+    }
+
+    nav {
+        gap: 7px 10px;
+    }
+
+    nav a {
+        font-size: 12px;
+    }
+
+    .hero-content h1 {
+        font-size: 43px;
+    }
+
+    blockquote {
+        font-size: 22px;
+    }
+
+}
