@@ -1,169 +1,140 @@
-const latitude = 27.57;
-const longitude = 81.60;
-
-async function loadWeather() {
-
-  const url =
-    `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}` +
-    `&current=temperature_2m,relative_humidity_2m,apparent_temperature,precipitation,weather_code,wind_speed_10m,wind_direction_10m` +
-    `&hourly=temperature_2m,precipitation_probability,precipitation,weather_code,wind_speed_10m` +
-    `&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max,sunrise,sunset` +
-    `&timezone=Asia%2FKolkata&forecast_days=7`;
-
-  try {
-
-    const response = await fetch(url);
-    const data = await response.json();
-
-    // Current weather
-    document.querySelector(".temp").textContent =
-      Math.round(data.current.temperature_2m) + "°C";
-
-    const cards = document.querySelectorAll(".info-card strong");
-
-    cards[0].textContent =
-      Math.round(data.current.temperature_2m) + "°C";
-
-    cards[1].textContent =
-      Math.round(data.current.relative_humidity_2m) + "%";
-
-    cards[2].textContent =
-      Math.round(data.current.wind_speed_10m) + " km/h";
-
-    cards[3].textContent =
-      data.hourly.precipitation_probability[0] + "%";
+// ==========================================
+// ROYAL STAY - JAVASCRIPT
+// ==========================================
 
 
-    // -------------------------
-    // NEXT 24 HOURS
-    // -------------------------
+// Get booking form
+const bookingForm = document.querySelector(".booking form");
 
-    const hourlyContainer =
-      document.getElementById("hourlyForecast");
 
-    hourlyContainer.innerHTML = "";
+// ==========================================
+// BOOKING FORM
+// ==========================================
 
-    const currentHour =
-      new Date().getHours();
+bookingForm.addEventListener("submit", function (event) {
 
-    for (
-      let i = currentHour;
-      i < currentHour + 24 && i < data.hourly.time.length;
-      i++
+    event.preventDefault();
+
+    const name = document.querySelector("#name").value.trim();
+    const email = document.querySelector("#email").value.trim();
+    const checkin = document.querySelector("#checkin").value;
+    const checkout = document.querySelector("#checkout").value;
+    const room = document.querySelector("#room").value;
+
+
+    // Check empty fields
+    if (
+        name === "" ||
+        email === "" ||
+        checkin === "" ||
+        checkout === "" ||
+        room === ""
     ) {
-
-      const time =
-        new Date(data.hourly.time[i]);
-
-      const hour =
-        time.toLocaleTimeString("en-IN", {
-          hour: "numeric",
-          hour12: true
-        });
-
-      const temperature =
-        Math.round(data.hourly.temperature_2m[i]);
-
-      const rain =
-        data.hourly.precipitation_probability[i];
-
-      const wind =
-        Math.round(data.hourly.wind_speed_10m[i]);
-
-      const card = document.createElement("div");
-
-      card.className = "hour-card";
-
-      card.innerHTML = `
-        <h3>${hour}</h3>
-        <span>🌦️</span>
-        <strong>${temperature}°C</strong>
-        <p>🌧️ ${rain}%</p>
-        <small>💨 ${wind} km/h</small>
-      `;
-
-      hourlyContainer.appendChild(card);
+        alert("Please fill all the booking details.");
+        return;
     }
 
 
-    // -------------------------
-    // 7 DAY FORECAST
-    // -------------------------
+    // Check dates
+    const checkInDate = new Date(checkin);
+    const checkOutDate = new Date(checkout);
 
-    const dailyContainer =
-      document.getElementById("dailyForecast");
 
-    dailyContainer.innerHTML = "";
-
-    for (
-      let i = 0;
-      i < 7;
-      i++
-    ) {
-
-      const date =
-        new Date(data.daily.time[i]);
-
-      const day =
-        date.toLocaleDateString("en-IN", {
-          weekday: "short"
-        });
-
-      const max =
-        Math.round(
-          data.daily.temperature_2m_max[i]
-        );
-
-      const min =
-        Math.round(
-          data.daily.temperature_2m_min[i]
-        );
-
-      const rain =
-        data.daily.precipitation_probability_max[i];
-
-      const card =
-        document.createElement("div");
-
-      card.className = "day";
-
-      card.innerHTML = `
-        <h3>${day}</h3>
-        <span>🌦️</span>
-        <strong>${max}° / ${min}°</strong>
-        <p>🌧️ Rain ${rain}%</p>
-      `;
-
-      dailyContainer.appendChild(card);
+    if (checkOutDate <= checkInDate) {
+        alert("Check-out date must be after check-in date.");
+        return;
     }
 
-  } catch (error) {
 
-    console.error(
-      "Weather data load nahi hua:",
-      error
+    // Success message
+    alert(
+        `Thank you, ${name}!\n\n` +
+        `Your booking request for a ${room.replace("-", " ")} has been received.\n\n` +
+        `We will contact you soon at ${email}.`
     );
 
-  }
-}
 
-loadWeather();
+    // Reset form
+    bookingForm.reset();
+
+});
 
 
-// Current date
+// ==========================================
+// SET MINIMUM CHECK-IN DATE
+// ==========================================
 
+const checkinInput = document.querySelector("#checkin");
+const checkoutInput = document.querySelector("#checkout");
+
+
+// Get today's date
 const today = new Date();
 
-document.getElementById("date").textContent =
-  today.toLocaleDateString("en-IN", {
-    weekday: "long",
-    day: "numeric",
-    month: "long",
-    year: "numeric"
-  });
+const year = today.getFullYear();
+const month = String(today.getMonth() + 1).padStart(2, "0");
+const day = String(today.getDate()).padStart(2, "0");
+
+const todayDate = `${year}-${month}-${day}`;
 
 
-// Footer year
+// Prevent past dates
+checkinInput.min = todayDate;
+checkoutInput.min = todayDate;
 
-document.getElementById("year").textContent =
-  today.getFullYear();
+
+// ==========================================
+// CHECK-OUT DATE UPDATE
+// ==========================================
+
+checkinInput.addEventListener("change", function () {
+
+    checkoutInput.min = this.value;
+
+});
+
+
+// ==========================================
+// SCROLL REVEAL
+// ==========================================
+
+const sections = document.querySelectorAll("section");
+
+
+const observer = new IntersectionObserver(
+    function (entries) {
+
+        entries.forEach(function (entry) {
+
+            if (entry.isIntersecting) {
+
+                entry.target.style.opacity = "1";
+                entry.target.style.transform = "translateY(0)";
+
+            }
+
+        });
+
+    },
+    {
+        threshold: 0.12
+    }
+);
+
+
+sections.forEach(function (section) {
+
+    section.style.opacity = "0";
+    section.style.transform = "translateY(25px)";
+    section.style.transition = "opacity 0.7s ease, transform 0.7s ease";
+
+    observer.observe(section);
+
+});
+
+
+// ==========================================
+// WELCOME MESSAGE
+// ==========================================
+
+console.log("Royal Stay website loaded successfully!");
